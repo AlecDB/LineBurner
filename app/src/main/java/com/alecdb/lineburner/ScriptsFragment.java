@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.R;
 
 import com.alecdb.lineburner.data.DBContract;
 import com.alecdb.lineburner.data.DBHelper;
@@ -42,12 +43,6 @@ public class ScriptsFragment extends Fragment implements LoaderManager.LoaderCal
         // Add this line in order for this fragment to handle menu events.
         setHasOptionsMenu(true);
     }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_scripts, menu);
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
