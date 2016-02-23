@@ -12,17 +12,13 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.R;
 
 import com.alecdb.lineburner.data.DBContract;
 import com.alecdb.lineburner.data.DBHelper;
 import com.alecdb.lineburner.data.LineBurnerProvider;
-
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -69,7 +65,7 @@ public class ScriptsFragment extends Fragment implements LoaderManager.LoaderCal
         //    }
 
 
-        View rootView = inflater.inflate(R.layout.fragment_scripts, container, false);
+        View rootView = inflater.inflate(com.alecdb.lineburner.R.layout.fragment_scripts, container, false);
 
         ListView listView = (ListView) rootView.findViewById(R.id.listView1);
         scriptAdapter = new ScriptListAdapter(getActivity(), null, 0);
