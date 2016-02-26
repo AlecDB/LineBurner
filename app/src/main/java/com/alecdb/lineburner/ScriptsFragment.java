@@ -1,7 +1,6 @@
 package com.alecdb.lineburner;
 
 
-import android.content.ContentValues;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -53,11 +52,7 @@ public class ScriptsFragment extends Fragment implements LoaderManager.LoaderCal
         //   if (!prefs.getBoolean("firstTime",false)){
 
         //Insert defaults scripts
-        ContentValues values = new ContentValues();
-        //     values.put(DBContract.ScriptEntries.COLUMN_NAME_ENTRY_ID, 0);
-        values.put(DBContract.ScriptEntries.COLUMN_NAME_TITLE, "Default Script");
-        values.put(DBContract.ScriptEntries.COLUMN_NAME_SUBTITLE, "Default Script Description");
-        db.insert(DBContract.ScriptEntries.TABLE_NAME, null, values);
+
 
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean("firstTime", true);
