@@ -29,7 +29,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 + " );";
 
-        final String SQL_CREATE_SCRIPTSTABLE = "CREATE TABLE " + ScriptEntries.TABLE_NAME + " (" + ScriptEntries.COLUMN_NAME_ENTRY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + ScriptEntries.COLUMN_NAME_TITLE + " TEXT NOT NULL, " + ScriptEntries.COLUMN_NAME_SUBTITLE + " TEXT, " + ScriptEntries.COLUMN_NAME_SCENE_KEY + " INTEGER NOT NULL "
+        final String SQL_CREATE_SCRIPTSTABLE = "CREATE TABLE " + ScriptEntries.TABLE_NAME + " (" + ScriptEntries.COLUMN_NAME_ENTRY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + ScriptEntries.COLUMN_NAME_TITLE + " TEXT NOT NULL, " + ScriptEntries.COLUMN_NAME_SUBTITLE + " TEXT, " + ScriptEntries.COLUMN_NAME_SCENE_KEY + " INTEGER NOT NULL, "
 
                 //Set up foreign key
                 + " FOREIGN KEY(" + ScriptEntries.COLUMN_NAME_SCENE_KEY + ") REFERENCES " +
