@@ -21,6 +21,7 @@ public final class DBContract {
     public static abstract class SceneEntries implements BaseColumns{
 
         public static final String TABLE_NAME = "SceneEntries";
+        public static final String COLUMN_NAME_ENTRY_ID = "entry_id";
 
     }
 }
