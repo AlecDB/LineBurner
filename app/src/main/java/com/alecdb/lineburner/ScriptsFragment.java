@@ -1,11 +1,9 @@
 package com.alecdb.lineburner;
 
 
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -18,8 +16,10 @@ import android.widget.ListView;
 import com.alecdb.lineburner.data.DBContract;
 import com.alecdb.lineburner.data.DBHelper;
 import com.alecdb.lineburner.data.LineBurnerProvider;
+
 /**
- * A placeholder fragment containing a simple view.
+ * The first and (so far) only fragment to run. Should display a simple list of the titles and subtitles of the Scripts entered in
+ * the Scripts table.
  */
 public class ScriptsFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -45,20 +45,15 @@ public class ScriptsFragment extends Fragment implements LoaderManager.LoaderCal
 
         DBHelper dbHelper = new DBHelper(getContext());
         SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        /* FIXME: Inserts default data if app hasn't been run; disabled temporarily for testing
         //Is the first time we've run this?
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getContext());
-
-
-        //   if (!prefs.getBoolean("firstTime",false)){
-
-        //Insert defaults scripts
-
-
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean("firstTime", true);
         editor.apply();
-        //    }
-
+            }
+        */
 
         View rootView = inflater.inflate(com.alecdb.lineburner.R.layout.fragment_scripts, container, false);
 

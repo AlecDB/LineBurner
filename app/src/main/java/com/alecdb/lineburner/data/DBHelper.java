@@ -10,6 +10,7 @@ import com.alecdb.lineburner.data.DBContract.SceneEntries;
 import com.alecdb.lineburner.data.DBContract.ScriptEntries;
 
 /**
+ * A helper object that defines the SQLite commands needed to create the database.
  * Created by ALec on 1/24/2016.
  */
 public class DBHelper extends SQLiteOpenHelper {
@@ -22,28 +23,30 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        final String SQL_CREATE_SCENESTABLE = "CREATE TABLE " + SceneEntries.TABLE_NAME + " (" + SceneEntries._ID + " INTEGER PRIMARY KEY "
-                //FINISH
+        final String SQL_CREATE_SCENESTABLE = "CREATE TABLE " + SceneEntries.TABLE_NAME + " (" + SceneEntries.COLUMN_NAME_ENTRY_ID + " INTEGER PRIMARY KEY "
+
                 + " );";
 
-        final String SQL_CREATE_SCRIPTSTABLE = "CREATE TABLE " + ScriptEntries.TABLE_NAME + " (" + ScriptEntries.COLUMN_NAME_ENTRY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + ScriptEntries.COLUMN_NAME_TITLE + " TEXT NOT NULL, " + ScriptEntries.COLUMN_NAME_SUBTITLE + " TEXT, " + ScriptEntries.COLUMN_NAME_SCENE_KEY + " INTEGER NOT NULL, "
+        final String SQL_CREATE_SCRIPTSTABLE = "CREATE TABLE " + ScriptEntries.TABLE_NAME + " (" + ScriptEntries.COLUMN_NAME_ENTRY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + ScriptEntries.COLUMN_NAME_TITLE + " TEXT NOT NULL, " + ScriptEntries.COLUMN_NAME_SUBTITLE + " TEXT, " + ScriptEntries.COLUMN_NAME_SCENE_KEY + " INTEGER NOT NULL "
 
                 //Set up foreign key
-                + " FOREIGN KEY (" + ScriptEntries.COLUMN_NAME_SCENE_KEY + ") REFERENCES " +
-                SceneEntries.TABLE_NAME + " (" + SceneEntries._ID + ");";
+                + " FOREIGN KEY(" + ScriptEntries.COLUMN_NAME_SCENE_KEY + ") REFERENCES " +
+                SceneEntries.TABLE_NAME + " (" + SceneEntries.COLUMN_NAME_ENTRY_ID + ")"
+                + " );";
 
-        db.execSQL(SQL_CREATE_SCRIPTSTABLE);
-        db.execSQL(SQL_CREATE_SCENESTABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_SCENESTABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_SCRIPTSTABLE);
 
-        // Move somewhere else, or at least make only run the first time
+
+        // FIXME: Move to ScriptsFragment to add defaults only on first run.
         ContentValues values = new ContentValues();
 
         values.put(DBContract.ScriptEntries.COLUMN_NAME_TITLE, "Default Script");
         values.put(DBContract.ScriptEntries.COLUMN_NAME_SUBTITLE, "Default Script Description");
         values.put(DBContract.ScriptEntries.COLUMN_NAME_SCENE_KEY, "1");
-        db.insert(DBContract.ScriptEntries.TABLE_NAME, null, values);
+        sqLiteDatabase.insert(DBContract.ScriptEntries.TABLE_NAME, null, values);
 
     }
 

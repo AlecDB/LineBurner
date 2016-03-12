@@ -9,6 +9,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+/**
+ * The first and only activity. All main app code is in this activity's fragment, ScriptsFragment.
+ */
 public class ScriptsActivity extends AppCompatActivity {
 
     @Override
@@ -17,10 +20,6 @@ public class ScriptsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scripts);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        //  Fragment scriptsFragment = new ScriptsFragment();
-
-        //   getSupportFragmentManager().beginTransaction().add();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
