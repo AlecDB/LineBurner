@@ -1,6 +1,5 @@
 package com.alecdb.lineburner.data;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -25,7 +24,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        final String SQL_CREATE_SCENESTABLE = "CREATE TABLE " + SceneEntries.TABLE_NAME + " (" + SceneEntries.COLUMN_NAME_ENTRY_ID + " INTEGER PRIMARY KEY "
+        final String SQL_CREATE_SCENESTABLE = "CREATE TABLE " + SceneEntries.TABLE_NAME + " (" + SceneEntries.COLUMN_NAME_ENTRY_ID + " INTEGER PRIMARY KEY, " + SceneEntries.COLUMN_NAME_TITLE + " TEXT NOT NULL "
 
                 + " );";
 
@@ -33,21 +32,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 //Set up foreign key
                 + " FOREIGN KEY(" + ScriptEntries.COLUMN_NAME_SCENE_KEY + ") REFERENCES " +
-                SceneEntries.TABLE_NAME + " (" + SceneEntries.COLUMN_NAME_ENTRY_ID + ")"
-                + " );";
+                SceneEntries.TABLE_NAME + " (" + SceneEntries.COLUMN_NAME_ENTRY_ID + ")" + " );";
 
         sqLiteDatabase.execSQL(SQL_CREATE_SCENESTABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_SCRIPTSTABLE);
-
-
-        // FIXME: Move to ScriptsFragment to add defaults only on first run.
-        ContentValues values = new ContentValues();
-
-        values.put(DBContract.ScriptEntries.COLUMN_NAME_TITLE, "Default Script");
-        values.put(DBContract.ScriptEntries.COLUMN_NAME_SUBTITLE, "Default Script Description");
-        values.put(DBContract.ScriptEntries.COLUMN_NAME_SCENE_KEY, "1");
-        sqLiteDatabase.insert(DBContract.ScriptEntries.TABLE_NAME, null, values);
-
     }
 
     @Override

@@ -25,6 +25,7 @@ public final class DBContract {
 
         public static final String TABLE_NAME = "SceneEntries";
         public static final String COLUMN_NAME_ENTRY_ID = "entry_id";
+        public static final String COLUMN_NAME_TITLE = "title";
 
     }
 }

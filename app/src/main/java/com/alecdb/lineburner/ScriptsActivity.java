@@ -29,6 +29,10 @@ public class ScriptsActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new ScriptsFragment()).commit();
+        }
     }
 
     @Override
